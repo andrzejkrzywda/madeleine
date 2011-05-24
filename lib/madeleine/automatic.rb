@@ -265,10 +265,10 @@ p restored_obj if restored_obj.class != Prox
         @myid_count = 0
         @list = {}
         Thread.current[:system] = self # during system startup system should not create commands
-        Thread.critical = true
-        @@systems ||= {}  # holds systems by sysid
-        @@systems[@sysid] = self
-        Thread.critical = false
+        Thread.exclusive do
+          @@systems ||= {}  # holds systems by sysid
+          @@systems[@sysid] = self
+        end
         @marshaller = marshaller # until attrb
 
         begin
