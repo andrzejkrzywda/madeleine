@@ -1,6 +1,6 @@
 require 'yaml'
 require 'madeleine/zmarshal'
-require 'soap/marshal'
+#require 'soap/marshal'
 
 module Madeleine
 
